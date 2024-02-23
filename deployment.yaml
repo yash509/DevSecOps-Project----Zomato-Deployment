@@ -1,1 +1,21 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zomato-clone-deployment
+  labels:
+    app: zomato-clone
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zomato-clone
+  template:
+    metadata:
+      labels:
+        app: zomato-clone
+    spec:
+      containers:
+      - name: zomato-clone
+        image: yash5090/zomato:latest
+        ports:
+        - containerPort: 3000
